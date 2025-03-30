@@ -108,9 +108,61 @@ export const StarBackground = () => {
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
 
+
+{[
+  { name: "Mercure", size: 12, distance: 60, color: "bg-gray-500" },
+  { name: "Vénus", size: 16, distance: 90, color: "bg-yellow-600" },
+  { name: "Terre", size: 18, distance: 130, color: "bg-blue-500" },
+  { name: "Mars", size: 14, distance: 180, color: "bg-red-500" },
+  { name: "Jupiter", size: 30, distance: 250, color: "bg-orange-500" },
+  { name: "Saturne", size: 28, distance: 320, color: "bg-yellow-400" },
+  { name: "Uranus", size: 22, distance: 380, color: "bg-teal-400" },
+  { name: "Neptune", size: 20, distance: 440, color: "bg-indigo-500" },
+].map((planet, index) => (
+  <div
+    key={planet.name}
+    className="absolute"
+    style={{
+      top: "50%",
+      left: "50%",
+      width: `${planet.distance * 2}px`,
+      height: `${planet.distance * 2}px`,
+      transform: "translate(-50%, -50%)",
+    }}
+  >
+    <motion.div
+      className="absolute border border-gray-400 dark:border-gray-600 rounded-full"
+      style={{
+        width: "100%",
+        height: "100%",
+      }}
+    />
+
+    <motion.div
+      className={`absolute rounded-full shadow-md ${planet.color}`}
+      style={{
+        width: `${planet.size}px`,
+        height: `${planet.size}px`,
+        top: "0", 
+        left: "50%",
+        transform: `translate(-50%, -50%) rotate(0deg)`,
+        transformOrigin: `0 ${planet.distance}px`,
+      }}
+      animate={{
+        rotate: [0, 360], 
+      }}
+      transition={{
+        duration: 5 + index * 3, 
+        repeat: Infinity,
+        ease: "linear",
+      }}
+    />
+  </div>
+))}
+
 <motion.div
         className="absolute w-32 h-32 bg-yellow-400 dark:bg-yellow-500 rounded-full shadow-2xl"
-        style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
+        style={{ top: "42%", left: "46.25%", transform: "translate(-50%, -50%)" }}
         animate={{
           scale: [1, 1.05, 1],
           boxShadow: [
@@ -125,61 +177,6 @@ export const StarBackground = () => {
           ease: "easeInOut",
         }}
       />
-
-      {[
-        { name: "Mercure", size: 12, distance: 60, color: "bg-gray-500" },
-        { name: "Vénus", size: 16, distance: 90, color: "bg-yellow-600" },
-        { name: "Terre", size: 18, distance: 130, color: "bg-blue-500" },
-        { name: "Mars", size: 14, distance: 180, color: "bg-red-500" },
-        { name: "Jupiter", size: 30, distance: 250, color: "bg-orange-500" },
-        { name: "Saturne", size: 28, distance: 320, color: "bg-yellow-400" },
-        { name: "Uranus", size: 22, distance: 380, color: "bg-teal-400" },
-        { name: "Neptune", size: 20, distance: 440, color: "bg-indigo-500" },
-      ].map((planet, index) => (
-        <motion.div
-          key={planet.name}
-          className={`absolute rounded-full shadow-md ${planet.color}`}
-          style={{
-            width: `${planet.size}px`,
-            height: `${planet.size}px`,
-            top: `calc(50% - ${planet.distance}px)`,
-            left: `calc(50% - ${planet.distance}px)`,
-          }}
-          animate={{
-            rotate: [0, 360],
-            translateX: [`${planet.distance}px`, `-${planet.distance}px`],
-            translateY: [`${planet.distance}px`, `-${planet.distance}px`],
-          }}
-          transition={{
-            duration: 5 + index * 3,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-      ))}
-
-      {[
-        60, 90, 130, 180, 250, 320, 380, 440,
-      ].map((distance, index) => (
-        <motion.div
-          key={index}
-          className="absolute border border-gray-400 dark:border-gray-600 rounded-full"
-          style={{
-            width: `${distance * 2}px`,
-            height: `${distance * 2}px`,
-            top: `calc(50% - ${distance}px)`,
-            left: `calc(50% - ${distance}px)`,
-          }}
-          animate={{
-            opacity: [0.2, 0.5, 0.2],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
     </div>
   );
 };

@@ -52,7 +52,6 @@ export const Contact = () => {
   };
 
   return (
-    
     <motion.footer
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -66,16 +65,15 @@ export const Contact = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          Contact me !        
+          Contact Me!
         </motion.h2>
       </div>
 
       <form onSubmit={handleSubmit} className="mx-auto mt-12 max-w-xl">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          <InputField id="firstName" label="Firstname" type="text" value={formData.firstName} onChange={handleChange} />
-          <InputField id="lastName" label="Lastname" type="text" value={formData.lastName} onChange={handleChange} />
+          <InputField id="firstName" label="First Name" type="text" value={formData.firstName} onChange={handleChange} />
+          <InputField id="lastName" label="Last Name" type="text" value={formData.lastName} onChange={handleChange} />
           <InputField id="company" label="Organization/Company" type="text" value={formData.company} onChange={handleChange} />
-          {/* <InputField id="phoneNumber" label="Phone Number" type="tel" value={formData.phoneNumber} onChange={handleChange} /> */}
           <PhoneInput
             id="phoneNumber"
             label="Phone Number"
@@ -83,21 +81,21 @@ export const Contact = () => {
             onChange={handleChange}
           />
           <InputField id="email" label="Email" type="email" value={formData.email} onChange={handleChange} />
-          <MessageField id="message" label="Your message" value={formData.message} onChange={handleChange} />
+          <MessageField id="message" label="Your Message" value={formData.message} onChange={handleChange} />
           
-          {/* <div className="flex items-center gap-x-4 sm:col-span-2">
+          <div className="flex items-center gap-x-4 sm:col-span-2">
             <input
               type="checkbox"
               checked={agreed}
               onChange={() => setAgreed(!agreed)}
               className="h-4 w-4 rounded bg-gray-700 border-gray-500 focus:ring-blue-500"
             />
-            <label className="text-sm textgray-800 dark:text-gray-200">
-              En cochant cette case, vous acceptez nos{" "}
-              <a href="#" className="font-semibold text-blue-400">politiques de confidentialité.</a>
+            <label className="text-sm text-gray-800 dark:text-gray-200">
+              By checking this box, you agree to our{" "}
+              <a href="#" className="font-semibold text-blue-400">privacy policies.</a>
             </label>
-            </div> */}
-            </div>
+          </div>
+        </div>
 
         <div className="mt-10">
           <motion.button
@@ -106,22 +104,22 @@ export const Contact = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Discutons ensemble
+            Let's Discuss
           </motion.button>
         </div>
 
         {status && (
           <div
             className={`mt-4 text-center px-4 py-2 rounded-md ${
-              status.includes("succès") || status.includes("success")
-                ? "bg-red-700 text-red-100 border border-red-400"
-                : "bg-green-700 text-green-100 border border-green-400"
+              status.includes("success")
+                ? "bg-green-700 text-green-100 border border-green-400"
+                : "bg-red-700 text-red-100 border border-red-400"
             }`}
           >
             {status}
           </div>
-)}      
-</form>
+        )}
+      </form>
     </motion.footer>
   );
 };
