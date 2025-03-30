@@ -21,7 +21,7 @@ export const Header = () => {
       const resetTimeout = setTimeout(() => {
         setDisplayedText("");
         setCurrentIndex(0);
-      }, 1500); 
+      }, 1500);
       return () => clearTimeout(resetTimeout);
     }
   }, [currentIndex, name]);
@@ -44,63 +44,67 @@ export const Header = () => {
         "0 0 30px #0ff",
         "0 0 40px #0ff",
         "0 0 55px #0ff",
-        "0 0 75px #0ff"
+        "0 0 75px #0ff",
       ],
-      transition: { duration: 1, repeat: Infinity, repeatType: "mirror" }
-    }
+      transition: { duration: 1, repeat: Infinity, repeatType: "mirror" },
+    },
   };
 
   return (
     <header
-    id="home"
-    className="relative h-screen "
+      id="home"
+      className="flex w-svw min-h-screen bg-gradient-to-br from-white via-[#F2F5F9] to-[#E4E7EB] dark:bg-gradient-to-br dark:from-black dark:via-[#0A0F1E] dark:to-[#1B263B]"
     >
-    <StarBackground />
-      {/* <div className="absolute inset-0 dark:bg-gradient-to-br from-purple-900 via-black to-blue-900" /> */}
-
-      <motion.div
+      {/* Background animation */}
+      <StarBackground />
+  
+      {/* Overlay for gradient effect */}
+      {/* <motion.div
         className="absolute inset-0"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.3 }}
         transition={{ duration: 2, ease: "easeInOut" }}
-      >
-      </motion.div>
-
-      <div className="relative z-10 text-center h-full flex flex-col items-center justify-center space-y-6 px-4">
+      ></motion.div> */}
+  
+      {/* Main content */}
+      <div className="relative z-10 text-center w-full min-h-screen flex flex-col items-center justify-center space-y-6 px-4 sm:px-8">
+        {/* Animated Header Text */}
         <motion.h5
-          className="text-lg tracking-[0.3em]"
+          className="text-base sm:text-sm tracking-[0.3em] text-cyan-600 dark:text-cyan-400"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          >
-        <HeaderText />
+        >
+          <HeaderText />
         </motion.h5>
-
+  
+        {/* Name with neon effect */}
         <motion.h1
-          className="text-5xl md:text-7xl font-extrabold text-cyan-500 dark:text-white flex items-center"
+          className="text-3xl sm:text-5xl md:text-7xl font-extrabold text-indigo-500 dark:text-gray-200 flex items-center"
           variants={neonVariants}
           initial="initial"
           animate="animate"
-          >
+        >
           {displayedText}
-          <span className="ml-1 text-cyan-500 dark:text-white">
+          <span className="ml-1 text-indigo-500 dark:text-gray-200">
             {cursorVisible ? "|" : " "}
           </span>
         </motion.h1>
-
+  
         <motion.h5
-          className="text-xl tracking-widest pt-8 text-cyan-500 font-bold dark:text-gray-200 font-mono"
+          className="text-xl sm:text-lg tracking-widest pt-8 text-green-500 dark:text-gray-200 font-mono"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          Front-End Developper
+          Front-End Developer
         </motion.h5>
-        <div className="mt-8 flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
+  
+        <div className="mt-8 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8">
           <Socials />
         </div>
       </div>
-
+  
       <div className="absolute inset-0 pointer-events-none">
         <svg className="w-full h-full">
           <defs>

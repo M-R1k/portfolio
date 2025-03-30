@@ -55,22 +55,25 @@ export const Contact = () => {
     <motion.footer
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="relative py-12 transition-colors duration-500 
+      className="relative py-16 px-6 sm:px-12 lg:px-24 transition-colors duration-500 
                  bg-gradient-to-br from-white via-[#F2F5F9] to-[#E4E7EB] 
-                 dark:bg-gradient-to-br dark:from-purple-900 dark:via-black dark:to-blue-900 opacity-80 bg-opacity-70"
+                 dark:bg-gradient-to-br dark:from-purple-900 dark:via-black dark:to-blue-900 opacity-90"
     >
-      <div id="contact" className="mx-auto max-w-2xl text-center">
+      <div id="contact" className="mx-auto max-w-4xl text-center">
         <motion.h2
-          className="text-5xl font-extrabold text-yellow-400 dark:text-gray-200 font-mono tracking-wider"
+          className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-green-500 dark:text-gray-200 font-mono tracking-wider"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          Get in Touch !
+          Get in Touch!
         </motion.h2>
+        <p className="mt-4 text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300">
+          Feel free to reach out by filling out the form below. I’ll get back to you as soon as possible!
+        </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="mx-auto mt-12 max-w-xl">
+      <form onSubmit={handleSubmit} className="mx-auto mt-12 max-w-3xl">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <InputField id="firstName" label="First Name" type="text" value={formData.firstName} onChange={handleChange} />
           <InputField id="lastName" label="Last Name" type="text" value={formData.lastName} onChange={handleChange} />
@@ -91,7 +94,7 @@ export const Contact = () => {
               onChange={() => setAgreed(!agreed)}
               className="h-4 w-4 rounded bg-gray-200 dark:bg-gray-700 border-gray-400 dark:border-gray-500 focus:ring-cyan-500"
             />
-            <label className="text-sm text-gray-800 dark:text-gray-200">
+            <label className="text-sm sm:text-base text-gray-800 dark:text-gray-200">
               By checking this box, you agree to our{" "}
               <a href="#" className="font-semibold text-cyan-500 dark:text-cyan-400">privacy policies.</a>
             </label>
@@ -101,7 +104,7 @@ export const Contact = () => {
         <div className="mt-10">
           <motion.button
             type="submit"
-            className="w-full rounded-md bg-yellow-400 px-4 py-2 text-gray-800 dark:text-white shadow-md hover:bg-yellow-400 dark:bg-cyan-500 dark:hover:bg-cyan-400"
+            className="w-full rounded-md bg-yellow-400 px-4 py-3 text-sm sm:text-base lg:text-lg font-semibold text-gray-800 dark:text-white shadow-md hover:bg-yellow-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 transition-all duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -111,7 +114,7 @@ export const Contact = () => {
 
         {status && (
           <div
-            className={`mt-4 text-center px-4 py-2 rounded-md ${
+            className={`mt-6 text-center px-4 py-3 rounded-md text-sm sm:text-base lg:text-lg ${
               status.includes("success")
                 ? "bg-green-100 text-green-800 border border-green-400 dark:bg-green-700 dark:text-green-100"
                 : "bg-red-100 text-red-800 border border-red-400 dark:bg-red-700 dark:text-red-100"
@@ -127,7 +130,7 @@ export const Contact = () => {
 
 const InputField = ({ id, label, type, value, onChange }) => (
   <div>
-    <label htmlFor={id} className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
+    <label htmlFor={id} className="block text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-200">
       {label}
     </label>
     <div className="mt-2">
@@ -145,7 +148,7 @@ const InputField = ({ id, label, type, value, onChange }) => (
 
 const MessageField = ({ id, label, value, onChange }) => (
   <div className="sm:col-span-2">
-    <label htmlFor={id} className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
+    <label htmlFor={id} className="block text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-200">
       {label}
     </label>
     <div className="mt-2">

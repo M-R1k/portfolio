@@ -23,14 +23,17 @@ function App() {
       {isLoading ? (
         <LoadingScreen />
       ) : (
-        <>
+        <div className="flex flex-col min-h-screen w-screen overflow-x-hidden">
+          <Nav /> 
+          <main className="flex-grow">
+
           <Header />
           <About />
-          <Nav /> 
           <Projects />
           <Contact />
           <Authentication />
-        </>
+        </main>
+        </div>
       )}
     </div>
   );
