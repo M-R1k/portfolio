@@ -124,16 +124,72 @@ const generateShootingStars = (num) => {
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
       
-        {/* Planets section (optional) */}
+        {/* Système solaire avec textures réalistes */}
         {[
-          { name: "Mercure", size: 12, distance: 60, color: "bg-gray-500" },
-          { name: "Vénus", size: 16, distance: 90, color: "bg-yellow-600" },
-          { name: "Terre", size: 18, distance: 130, color: "bg-blue-500" },
-          { name: "Mars", size: 14, distance: 180, color: "bg-red-500" },
-          { name: "Jupiter", size: 30, distance: 250, color: "bg-orange-500" },
-          { name: "Saturne", size: 28, distance: 320, color: "bg-yellow-400" },
-          { name: "Uranus", size: 22, distance: 380, color: "bg-teal-400" },
-          { name: "Neptune", size: 20, distance: 440, color: "bg-indigo-500" },
+          { 
+            name: "Mercure", 
+            size: 12, 
+            distance: 60, 
+            texture: "bg-gradient-to-br from-gray-400 via-gray-600 to-gray-800",
+            pattern: "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 50%)",
+            features: ["craters"]
+          },
+          { 
+            name: "Vénus", 
+            size: 16, 
+            distance: 90, 
+            texture: "bg-gradient-to-br from-yellow-200 via-yellow-400 to-yellow-700",
+            pattern: "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.4) 0%, transparent 60%)",
+            features: ["clouds"]
+          },
+          { 
+            name: "Terre", 
+            size: 18, 
+            distance: 130, 
+            texture: "bg-gradient-to-br from-blue-300 via-green-400 to-blue-600",
+            pattern: "radial-gradient(circle at 40% 40%, rgba(255,255,255,0.3) 0%, transparent 50%)",
+            features: ["continents", "oceans", "clouds"]
+          },
+          { 
+            name: "Mars", 
+            size: 14, 
+            distance: 180, 
+            texture: "bg-gradient-to-br from-red-300 via-red-500 to-red-800",
+            pattern: "radial-gradient(circle at 25% 25%, rgba(255,255,255,0.2) 0%, transparent 40%)",
+            features: ["polar_caps", "dust_storms"]
+          },
+          { 
+            name: "Jupiter", 
+            size: 30, 
+            distance: 250, 
+            texture: "bg-gradient-to-br from-orange-300 via-orange-500 to-red-600",
+            pattern: "linear-gradient(45deg, rgba(255,255,255,0.3) 0%, transparent 50%, rgba(255,255,255,0.2) 100%)",
+            features: ["bands", "great_red_spot"]
+          },
+          { 
+            name: "Saturne", 
+            size: 28, 
+            distance: 320, 
+            texture: "bg-gradient-to-br from-yellow-200 via-yellow-400 to-orange-500",
+            pattern: "radial-gradient(circle at 35% 35%, rgba(255,255,255,0.4) 0%, transparent 60%)",
+            features: ["bands"]
+          },
+          { 
+            name: "Uranus", 
+            size: 22, 
+            distance: 380, 
+            texture: "bg-gradient-to-br from-cyan-200 via-cyan-400 to-blue-500",
+            pattern: "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 50%)",
+            features: ["bands"]
+          },
+          { 
+            name: "Neptune", 
+            size: 20, 
+            distance: 440, 
+            texture: "bg-gradient-to-br from-indigo-300 via-indigo-500 to-blue-700",
+            pattern: "radial-gradient(circle at 25% 25%, rgba(255,255,255,0.2) 0%, transparent 40%)",
+            features: ["bands", "storms"]
+          },
         ].map((planet, index) => (
           <div
             key={planet.name}
@@ -154,8 +210,9 @@ const generateShootingStars = (num) => {
               }}
             />
       
+            {/* Planète avec texture réaliste */}
             <motion.div
-              className={`absolute rounded-full shadow-md ${planet.color}`}
+              className={`absolute rounded-full shadow-lg ${planet.texture}`}
               style={{
                 width: `${planet.size}px`,
                 height: `${planet.size}px`,
@@ -163,6 +220,8 @@ const generateShootingStars = (num) => {
                 left: "50%",
                 transform: `translate(-50%, -50%) rotate(0deg)`,
                 transformOrigin: `0 ${planet.distance}px`,
+                background: `${planet.texture}, ${planet.pattern}`,
+                boxShadow: `inset 0 0 ${planet.size/3}px rgba(0,0,0,0.3), 0 0 ${planet.size/2}px rgba(0,0,0,0.2)`,
               }}
               animate={{
                 rotate: [0, 360], 
@@ -172,27 +231,163 @@ const generateShootingStars = (num) => {
                 repeat: Infinity,
                 ease: "linear",
               }}
-            />
+            >
+              {/* Effets de surface spécifiques */}
+              {planet.features.includes("craters") && (
+                <div className="absolute inset-0 rounded-full opacity-30">
+                  {Array.from({ length: 3 }).map((_, i) => (
+                    <div
+                      key={i}
+                      className="absolute w-1 h-1 bg-gray-800 rounded-full"
+                      style={{
+                        top: `${20 + i * 30}%`,
+                        left: `${30 + i * 20}%`,
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
+              
+              {planet.features.includes("clouds") && (
+                <motion.div
+                  className="absolute inset-0 rounded-full opacity-40"
+                  style={{
+                    background: "radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.6) 0%, transparent 70%)",
+                  }}
+                  animate={{
+                    opacity: [0.3, 0.6, 0.3],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              )}
+              
+              {planet.features.includes("bands") && (
+                <div className="absolute inset-0 rounded-full opacity-50">
+                  {Array.from({ length: 4 }).map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-full h-0.5 bg-white opacity-30"
+                      style={{
+                        top: `${20 + i * 15}%`,
+                      }}
+                      animate={{
+                        opacity: [0.2, 0.5, 0.2],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        delay: i * 0.5,
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
+              
+              {planet.features.includes("great_red_spot") && (
+                <motion.div
+                  className="absolute w-4 h-2 bg-red-600 rounded-full opacity-60"
+                  style={{
+                    top: "40%",
+                    left: "60%",
+                  }}
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.4, 0.7, 0.4],
+                  }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              )}
+              
+              {planet.features.includes("polar_caps") && (
+                <div className="absolute inset-0 rounded-full">
+                  <div className="absolute w-full h-1 bg-white opacity-60 top-1" />
+                  <div className="absolute w-full h-1 bg-white opacity-60 bottom-1" />
+                </div>
+              )}
+            </motion.div>
+            
           </div>
         ))}
   
+
+        {/* Soleil avec texture réaliste */}
         <motion.div
-          className="absolute sm:w-24 sm:h-24 w-36 h-36 bg-yellow-400 dark:bg-yellow-500 rounded-full shadow-2xl"
-          style={{ top: "42%", left: "45.5%", transform: "translate(-50%, -50%)" }}
+          className="absolute sm:w-24 sm:h-24 w-36 h-36 rounded-full shadow-2xl"
+          style={{ 
+            top: "42%", 
+            left: "45.5%", 
+            transform: "translate(-50%, -50%)",
+            background: "radial-gradient(circle at 30% 30%, #FFD700 0%, #FFA500 50%, #FF4500 100%)",
+            boxShadow: "inset 0 0 20px rgba(255,255,255,0.3), 0 0 40px rgba(255,215,0,0.8)"
+          }}
           animate={{
             scale: [1, 1.05, 1],
             boxShadow: [
-              "0px 0px 10px rgba(255, 215, 0, 0.6)",
-              "0px 0px 30px rgba(255, 215, 0, 0.9)",
-              "0px 0px 10px rgba(255, 215, 0, 0.6)",
+              "inset 0 0 20px rgba(255,255,255,0.3), 0 0 20px rgba(255, 215, 0, 0.6)",
+              "inset 0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255, 215, 0, 0.9)",
+              "inset 0 0 20px rgba(255,255,255,0.3), 0 0 20px rgba(255, 215, 0, 0.6)",
             ],
           }}
           transition={{
-            duration: 2,
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          {/* Taches solaires */}
+          <motion.div
+            className="absolute w-2 h-2 bg-gray-800 rounded-full opacity-60"
+            style={{ top: "30%", left: "40%" }}
+            animate={{
+              opacity: [0.4, 0.8, 0.4],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute w-1 h-1 bg-gray-700 rounded-full opacity-50"
+            style={{ top: "60%", left: "70%" }}
+            animate={{
+              opacity: [0.3, 0.6, 0.3],
+              scale: [1, 1.3, 1],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+          />
+          
+          {/* Flammes solaires */}
+          <motion.div
+            className="absolute inset-0 rounded-full opacity-30"
+            style={{
+              background: "radial-gradient(ellipse at 50% 0%, rgba(255,100,0,0.8) 0%, transparent 70%)",
+            }}
+            animate={{
+              opacity: [0.2, 0.4, 0.2],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 4,
             repeat: Infinity,
             ease: "easeInOut",
           }}
         />
+        </motion.div>
       </div>
     );
   };

@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);  
+    }, 10000); // 10 secondes pour correspondre à la durée de la barre de progression
 
     return () => clearTimeout(timer);
   }, []);

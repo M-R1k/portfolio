@@ -11,7 +11,7 @@ app.use(express.json());
 const dbConfig = {
     host: "localhost",
     user: "aymeric",
-    password: "V12345maj",
+    password: "V12345maj!",
     database: "portfolio_contact_form_db",
 };
 

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { FaReact, FaNodeJs, FaDatabase } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaDatabase, FaGraduationCap, FaBriefcase, FaCalendarAlt } from "react-icons/fa";
 import { SiTailwindcss, SiPhp, SiSymfony, SiMysql } from "react-icons/si";
 
 const iconVariants = {
@@ -16,6 +16,67 @@ const iconVariants = {
     },
   }),
 };
+
+const timelineVariants = {
+  hidden: { opacity: 0, x: -50 },
+  visible: (i) => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: i * 0.3,
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  }),
+};
+
+// Données de la timeline basées sur le CV
+const timelineData = [
+  {
+    id: 1,
+    type: "formation",
+    title: "Développeur Web",
+    company: "EPITECH - Le Kremlin-Bicêtre",
+    period: "Depuis novembre 2023",
+    description: "Formation immersive avec méthodologie de projets, Cahier des charges/Kick-off/Bootstrap, Follow-up, Test automatisé, Code review",
+    icon: <FaGraduationCap />,
+    color: "text-blue-600",
+    bgColor: "bg-blue-100 dark:bg-blue-900/30"
+  },
+  {
+    id: 2,
+    type: "experience",
+    title: "Assistant Pédagogique",
+    company: "EPITECH - Le Kremlin-Bicêtre",
+    period: "Janvier 2025 - Février 2025",
+    description: "Accompagnement d'élèves d'ISEGCOM dans leur découverte des bases du code (HTML, CSS, PHP, SQL). Développement de méthodes pédagogiques adaptées.",
+    icon: <FaBriefcase />,
+    color: "text-green-600",
+    bgColor: "bg-green-100 dark:bg-green-900/30"
+  },
+  {
+    id: 3,
+    type: "experience",
+    title: "Alternant Développeur Full-Stack",
+    company: "FBH – Imprimeur numérique - Paris",
+    period: "Novembre 2024 - Décembre 2024",
+    description: "Pilotage de la transition numérique via l'implémentation et personnalisation du logiciel ERP Odoo. Analyse des besoins métiers, développement de fonctionnalités sur mesure.",
+    icon: <FaBriefcase />,
+    color: "text-purple-600",
+    bgColor: "bg-purple-100 dark:bg-purple-900/30"
+  },
+  {
+    id: 4,
+    type: "formation",
+    title: "Formation Cinéma",
+    company: "Conservatoire Libre du Cinéma Français",
+    period: "Septembre 2013 - Juin 2015",
+    description: "Formation complète en cinéma à Paris, France",
+    icon: <FaGraduationCap />,
+    color: "text-orange-600",
+    bgColor: "bg-orange-100 dark:bg-orange-900/30"
+  }
+];
 
 export const About = () => {
   return (
@@ -112,6 +173,81 @@ export const About = () => {
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Timeline Section */}
+        <motion.div
+          className="mt-20"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1 }}
+        >
+          <motion.h3
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-12 text-green-500 dark:text-cyan-400 font-mono"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.2 }}
+          >
+            Mon Parcours
+          </motion.h3>
+
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 to-cyan-400 dark:from-cyan-400 dark:to-green-500"></div>
+
+            {/* Timeline Items */}
+            <div className="space-y-8">
+              {timelineData.map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  custom={index}
+                  variants={timelineVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="relative flex items-start"
+                >
+                  {/* Timeline Dot */}
+                  <div className={`absolute left-6 w-4 h-4 rounded-full ${item.bgColor} border-4 border-white dark:border-gray-800 z-10 flex items-center justify-center`}>
+                    <div className={`text-sm ${item.color}`}>
+                      {item.icon}
+                    </div>
+                  </div>
+
+                  {/* Content Card */}
+                  <motion.div
+                    className={`ml-16 p-6 rounded-xl shadow-lg ${item.bgColor} border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300`}
+                    whileHover={{ scale: 1.02, y: -5 }}
+                  >
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className={`text-2xl ${item.color}`}>
+                        {item.icon}
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-bold text-gray-800 dark:text-white">
+                          {item.title}
+                        </h4>
+                        <p className="text-sm font-semibold text-gray-600 dark:text-gray-300">
+                          {item.company}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center gap-2 mb-3">
+                      <FaCalendarAlt className={`text-sm ${item.color}`} />
+                      <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                        {item.period}
+                      </span>
+                    </div>
+                    
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
