@@ -20,9 +20,9 @@ function App() {
 
   return (
     <div className="App">
-      {isLoading ? (
+      {/* {isLoading ? (
         <LoadingScreen />
-      ) : (
+      ) : ( */}
         <div className="flex flex-col min-h-screen w-screen overflow-x-hidden">
           <Nav /> 
           <main className="flex-grow">
