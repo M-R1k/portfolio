@@ -6,7 +6,6 @@ export const LoadingScreen = () => {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
 
-  // Caractères Matrix
   const matrixChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?";
   
   useEffect(() => {
@@ -20,39 +19,33 @@ export const LoadingScreen = () => {
     canvas.width = canvasWidth;
     canvas.height = canvasHeight;
     
-    const fontSize = 16; // Légèrement plus grand
+    const fontSize = 16; 
     const columns = Math.floor(canvasWidth / fontSize);
     const drops = Array(columns).fill(1);
     
     const draw = () => {
-      // Fond semi-transparent pour effet de traînée
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       ctx.fillRect(0, 0, canvasWidth, canvasHeight);
       
-      // Couleur verte pour les caractères
       ctx.fillStyle = '#00ff00';
       ctx.font = `${fontSize}px monospace`;
       
       for (let i = 0; i < drops.length; i++) {
-        // Caractère aléatoire
         const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
         
-        // Position et opacité
         const x = i * fontSize;
         const y = drops[i] * fontSize;
         
-        // Effet de dégradé (plus brillant en haut)
         const opacity = Math.max(0, 1 - (y / canvasHeight) * 0.8);
         ctx.globalAlpha = opacity;
         
         ctx.fillText(text, x, y);
         
-        // Reset de la colonne si elle atteint le bas (ralenti)
         if (y > canvasHeight && Math.random() > 0.985) {
           drops[i] = 0;
         }
         
-        drops[i] += 0.8; // Ralentir la chute des caractères
+        drops[i] += 0.8; 
       }
       
       animationRef.current = requestAnimationFrame(draw);
@@ -71,29 +64,26 @@ export const LoadingScreen = () => {
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev < 100) {
-          return prev + 1; // Augmenter la progression pour une synchronisation plus fluide
+          return prev + 1; 
         } else {
           clearInterval(interval);
           return prev;
         }
       });
-    }, 100); // Ajuster l'intervalle pour une durée totale de 10 secondes (100% / 1% par 100ms = 10s)
+    }, 100);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="fixed inset-0 bg-black flex flex-col items-center justify-center overflow-hidden">
-      {/* Canvas pour l'effet Matrix */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
         style={{ zIndex: 1 }}
       />
       
-      {/* Overlay avec dégradé */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60 z-10" />
       
-      {/* Grille Matrix */}
       <motion.div
         className="absolute inset-0 pointer-events-none z-20"
         initial={{ opacity: 0 }}
@@ -115,7 +105,6 @@ export const LoadingScreen = () => {
         </svg>
       </motion.div>
 
-      {/* Contenu principal */}
       <motion.div
         className="relative z-30 text-center"
         initial={{ scale: 0.8, opacity: 0 }}
@@ -160,7 +149,6 @@ export const LoadingScreen = () => {
           </motion.div>
         </motion.div>
 
-        {/* Barre de progression améliorée */}
         <motion.div 
           className="mt-8 w-80 h-3 bg-gray-900 rounded-full overflow-hidden border border-green-500/30"
           initial={{ opacity: 0, y: 20 }}
@@ -173,7 +161,6 @@ export const LoadingScreen = () => {
             animate={{ width: `${progress}%` }}
             transition={{ duration: 0.05, ease: "linear" }}
           >
-            {/* Effet de brillance */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
               animate={{ x: ["-100%", "100%"] }}
@@ -197,7 +184,6 @@ export const LoadingScreen = () => {
           </motion.p>
         </motion.div>
         
-        {/* Indicateurs de statut */}
         <motion.div
           className="mt-6 text-green-400 text-sm font-mono space-y-1"
           initial={{ opacity: 0, y: 10 }}

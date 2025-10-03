@@ -30,7 +30,6 @@ const timelineVariants = {
   }),
 };
 
-// Données de la timeline basées sur le CV
 const timelineData = [
   {
     id: 1,
@@ -87,7 +86,6 @@ export const About = () => {
                  dark:bg-gradient-to-br dark:from-black dark:via-[#0A0F1E] dark:to-[#1B263B] 
                  text-gray-700 dark:text-white"
     >
-      {/* Background Glow */}
       <motion.div
         className="absolute w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-cyan-400 rounded-full opacity-20 filter blur-3xl mix-blend-lighten"
         initial={{ x: 200, y: 300, opacity: 0 }}
@@ -95,9 +93,7 @@ export const About = () => {
         transition={{ duration: 3, ease: "easeOut" }}
       />
 
-      {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto text-center">
-        {/* Profile Picture */}
         <img
           src="pp.jpg"
           alt="My profile picture"
@@ -106,7 +102,6 @@ export const About = () => {
                      transition-shadow duration-500 ease-in-out"
         />
 
-        {/* Title */}
         <motion.h2
           className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-mono text-green-500 dark:text-gray-200 tracking-wider"
           initial={{ opacity: 0, y: -20 }}
@@ -116,7 +111,6 @@ export const About = () => {
           About Me
         </motion.h2>
 
-        {/* Description */}
         <motion.p
           className="mt-6 text-base sm:text-lg lg:text-xl leading-relaxed text-gray-800 dark:text-gray-300 font-mono"
           initial={{ opacity: 0, y: 20 }}
@@ -144,7 +138,6 @@ export const About = () => {
           Innovation, optimization, and creativity are the driving forces behind my vision of development.
         </motion.p>
 
-        {/* Icons */}
         <motion.div
           className="flex flex-wrap justify-center gap-6 mt-12"
           initial="hidden"
@@ -175,7 +168,6 @@ export const About = () => {
           ))}
         </motion.div>
 
-        {/* Timeline Section */}
         <motion.div
           className="mt-20"
           initial={{ opacity: 0, y: 50 }}
@@ -192,10 +184,8 @@ export const About = () => {
           </motion.h3>
 
           <div className="relative">
-            {/* Timeline Line */}
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 to-cyan-400 dark:from-cyan-400 dark:to-green-500"></div>
 
-            {/* Timeline Items */}
             <div className="space-y-8">
               {timelineData.map((item, index) => (
                 <motion.div
@@ -207,14 +197,12 @@ export const About = () => {
                   viewport={{ once: true, amount: 0.3 }}
                   className="relative flex items-start"
                 >
-                  {/* Timeline Dot */}
                   <div className={`absolute left-6 w-4 h-4 rounded-full ${item.bgColor} border-4 border-white dark:border-gray-800 z-10 flex items-center justify-center`}>
                     <div className={`text-sm ${item.color}`}>
                       {item.icon}
                     </div>
                   </div>
 
-                  {/* Content Card */}
                   <motion.div
                     className={`ml-16 p-6 rounded-xl shadow-lg ${item.bgColor} border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300`}
                     whileHover={{ scale: 1.02, y: -5 }}
