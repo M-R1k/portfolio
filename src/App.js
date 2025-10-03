@@ -9,32 +9,45 @@ import { Authentication } from './components/auth/Authentication';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(true); // Mode sombre par défaut
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 10000); // 10 secondes pour correspondre à la durée de la barre de progression
+    }, 8000);
 
     return () => clearTimeout(timer);
   }, []);
 
+  // Appliquer la classe dark au document
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <div className="App">
+    <div className={`App ${isDarkMode ? 'dark' : ''}`}>
       {/* {isLoading ? (
         <LoadingScreen />
       ) : ( */}
-        <div className="flex flex-col min-h-screen w-screen overflow-x-hidden">
-          <Nav /> 
+        <div className="flex flex-col min-h-screen w-screen overflow-x-hidden bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-300">
+          <Nav isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} /> 
           <main className="flex-grow">
-
-          <Header />
-          <About />
-          <Projects />
-          <Contact />
-          <Authentication />
-        </main>
+            <Header />
+            <About />
+            <Projects />
+            <Contact />
+            <Authentication />
+          </main>
         </div>
-      )}
+      {/* )} */}
     </div>
   );
 }
