@@ -55,20 +55,9 @@ export const Header = () => {
       id="home"
       className="flex w-svw min-h-screen bg-gradient-to-br from-white via-[#F2F5F9] to-[#E4E7EB] dark:bg-gradient-to-br dark:from-black dark:via-[#0A0F1E] dark:to-[#1B263B]"
     >
-      {/* Background animation */}
       <StarBackground />
   
-      {/* Overlay for gradient effect */}
-      {/* <motion.div
-        className="absolute inset-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.3 }}
-        transition={{ duration: 2, ease: "easeInOut" }}
-      ></motion.div> */}
-  
-      {/* Main content */}
       <div className="relative z-10 text-center w-full min-h-screen flex flex-col items-center justify-center space-y-6 px-4 sm:px-8">
-        {/* Animated Header Text */}
         <motion.h5
           className="text-base sm:text-sm tracking-[0.3em] text-cyan-600 dark:text-cyan-400"
           initial={{ opacity: 0, y: -20 }}
@@ -78,7 +67,6 @@ export const Header = () => {
           <HeaderText />
         </motion.h5>
   
-        {/* Name with neon effect */}
         <motion.h1
           className="text-3xl sm:text-5xl md:text-7xl font-extrabold text-indigo-500 dark:text-gray-200 flex items-center"
           variants={neonVariants}

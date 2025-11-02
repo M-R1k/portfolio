@@ -61,7 +61,7 @@ export const Contact = () => {
     >
       <div id="contact" className="mx-auto max-w-4xl text-center">
         <motion.h2
-          className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-green-500 dark:text-gray-200 font-mono tracking-wider"
+          className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-green-600 dark:text-green-400 font-mono tracking-wider"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -89,14 +89,16 @@ export const Contact = () => {
           
           <div className="flex items-center gap-x-4 sm:col-span-2">
             <input
+              id="privacy-policy"
               type="checkbox"
               checked={agreed}
               onChange={() => setAgreed(!agreed)}
-              className="h-4 w-4 rounded bg-gray-200 dark:bg-gray-700 border-gray-400 dark:border-gray-500 focus:ring-cyan-500"
+              className="h-5 w-5 rounded bg-gray-200 dark:bg-gray-700 border-gray-400 dark:border-gray-500 focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
+              aria-required="true"
             />
-            <label className="text-sm sm:text-base text-gray-800 dark:text-gray-200">
+            <label htmlFor="privacy-policy" className="text-sm sm:text-base text-gray-800 dark:text-gray-200 cursor-pointer">
               By checking this box, you agree to our{" "}
-              <a href="#" className="font-semibold text-cyan-500 dark:text-cyan-400">privacy policies.</a>
+              <a href="#privacy" className="font-semibold text-cyan-600 dark:text-cyan-400 hover:underline focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded">privacy policies.</a>
             </label>
           </div>
         </div>

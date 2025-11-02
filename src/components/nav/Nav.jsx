@@ -40,26 +40,32 @@ export const Nav = () => {
   return (
     <div className="relative">
         <motion.button
-          className="fixed top-4 right-4 w-14 h-14 bg-gradient-to-r from-green-400 to-blue-500 dark:from-green-600 dark:to-blue-700 text-white rounded-full shadow-lg flex items-center justify-center hover:from-green-500 hover:to-blue-600 dark:hover:from-green-700 dark:hover:to-blue-800 transition-all duration-300 md:hidden z-50"
+          className="fixed top-4 right-4 w-14 h-14 bg-gradient-to-r from-green-400 to-blue-500 dark:from-green-600 dark:to-blue-700 text-white rounded-full shadow-lg flex items-center justify-center hover:from-green-500 hover:to-blue-600 dark:hover:from-green-700 dark:hover:to-blue-800 transition-all duration-300 md:hidden z-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
           onClick={() => setMenuOpen(!menuOpen)}
           whileTap={{ scale: 0.9 }}
+          aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
         >
-          {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          {menuOpen ? <FaTimes size={24} aria-hidden="true" /> : <FaBars size={24} aria-hidden="true" />}
         </motion.button>
 
         <AnimatePresence>
           {(menuOpen || showNavbar) && (
             <motion.nav
           ref={menuRef}
+          id="mobile-navigation"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           className={`fixed top-0 z-50 w-full backdrop-blur-lg bg-white dark:bg-gray-900 bg-opacity-90 border-b border-gray-300 dark:border-gray-700 py-4 px-6 flex flex-col md:flex-row justify-between items-center shadow-md ${
             menuOpen ? "flex" : "hidden md:flex"
           }`}
+          role="navigation"
+          aria-label="Navigation principale"
             >
             <div className="flex items-center space-x-4">
-              <a href="#header" className="text-2xl font-bold text-green-500 dark:text-green-400">
+              <a href="#header" className="text-2xl font-bold text-green-500 dark:text-green-400 hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded" aria-label="Retour à l'accueil">
                 M<span className="text-blue-500 dark:text-blue-400">-R1K</span>
               </a>
             </div>
@@ -79,11 +85,13 @@ export const Nav = () => {
                     spy={true}
                     activeClass="text-green-500 dark:text-green-400"
                     onClick={() => setMenuOpen(false)}
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded"
+                    aria-label={`Aller à la section ${item.label}`}
                   >
                     <motion.div
                       className="text-2xl md:text-xl lg:text-2xl"
                       whileHover={{ scale: 1.2 }}
+                      aria-hidden="true"
                     >
                       {item.icon}
                     </motion.div>
@@ -91,7 +99,6 @@ export const Nav = () => {
                   </ScrollLink>
                 </motion.div>
               ))}
-              {/* Dark Mode Toggle */}
               <DarkModeToggle />
             </div>
           </motion.nav>

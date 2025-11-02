@@ -101,14 +101,16 @@ function Card({ project, index }) {
         </p>
 
         {project.videoUrl && (
-          <div className="w-full rounded-lg overflow-hidden shadow-md mb-6">
+          <div className="w-full rounded-lg overflow-hidden shadow-md mb-6 aspect-video">
             <ReactPlayer
               className="rounded-lg"
               width="100%"
-              height="200px"
+              height="100%"
               url={project.videoUrl}
               controls
               playing={false}
+              loading="lazy"
+              pip={false}
             />
           </div>
         )}

@@ -3,7 +3,7 @@ import Flag from "react-world-flags";
 
 export const PhoneInput = ({ id, label, value, onChange }) => {
   const [countryCode, setCountryCode] = useState("+33");
-  const [country, setCountry] = useState("FR"); // ISO country code
+  const [country, setCountry] = useState("FR");
 
   const handleCountryChange = (e) => {
     const selectedCode = e.target.value;
@@ -36,12 +36,10 @@ export const PhoneInput = ({ id, label, value, onChange }) => {
         {label}
       </label>
       <div className="mt-2 relative flex items-center">
-        {/* Country Flag */}
         <div className="absolute left-3 top-0 h-full flex items-center">
           <Flag code={country} className="w-6 h-4" />
         </div>
 
-        {/* Country Code Selector */}
         <select
           value={countryCode}
           onChange={handleCountryChange}
@@ -53,7 +51,6 @@ export const PhoneInput = ({ id, label, value, onChange }) => {
           <option value="+49">+49</option>
         </select>
 
-        {/* Phone Number Input */}
         <input
           id={id}
           name={id}

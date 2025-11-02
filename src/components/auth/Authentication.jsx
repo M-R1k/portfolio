@@ -12,7 +12,6 @@ export const Authentication = () => {
   return (
     <div id="authentication" className="flex items-center justify-center min-h-screen dark:bg-gradient-to-br dark:from-blue-900 dark:via-black dark:to-purple-900 opacity-80">
       <div className="bg-gray-200 dark:bg-black dark:bg-opacity-70 p-8 rounded-lg shadow-2xl w-full max-w-md">   
-        {/* Title */}
         <motion.h2
           className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-green-500 dark:text-gray-200 text-center tracking-wider pb-6 font-mono"
           initial={{ opacity: 0, y: -20 }}
@@ -22,9 +21,7 @@ export const Authentication = () => {
           Sign In
         </motion.h2>
 
-        {/* Form */}
         <form onSubmit={handleLogin} className="space-y-6">
-          {/* Email Field */}
           <div>
             <label
               htmlFor="email"
@@ -42,7 +39,6 @@ export const Authentication = () => {
             />
           </div>
 
-          {/* Password Field */}
           <div>
             <label
               htmlFor="password"
@@ -60,7 +56,6 @@ export const Authentication = () => {
             />
           </div>
 
-          {/* Submit Button */}
           <div>
             <motion.button
               type="submit"
@@ -73,7 +68,6 @@ export const Authentication = () => {
           </div>
         </form>
 
-        {/* Additional Links */}
         <div className="mt-6 text-center">
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
             Don't have an account?{" "}

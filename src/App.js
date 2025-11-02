@@ -26,13 +26,12 @@ function App() {
         <div className="flex flex-col min-h-screen w-screen overflow-x-hidden">
           <Nav /> 
           <main className="flex-grow">
-
-          <Header />
-          <About />
-          <Projects />
-          <Contact />
-          <Authentication />
-        </main>
+            <Header />
+            <About />
+            <Projects />
+            <Contact />
+            <Authentication />
+          </main>
         </div>
       )}
     </div>

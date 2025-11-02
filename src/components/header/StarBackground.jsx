@@ -124,7 +124,6 @@ const generateShootingStars = (num) => {
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
       
-        {/* Planets section (optional) */}
         {[
           { name: "Mercure", size: 12, distance: 60, color: "bg-gray-500" },
           { name: "Vénus", size: 16, distance: 90, color: "bg-yellow-600" },
@@ -139,8 +138,8 @@ const generateShootingStars = (num) => {
             key={planet.name}
             className="absolute"
             style={{
-              top: "50%",
-              left: "50%",
+              top: "55%",
+              left: "53%",
               width: `${planet.distance * 2}px`,
               height: `${planet.distance * 2}px`,
               transform: "translate(-50%, -50%)",
@@ -178,7 +177,12 @@ const generateShootingStars = (num) => {
   
         <motion.div
           className="absolute sm:w-24 sm:h-24 w-36 h-36 bg-yellow-400 dark:bg-yellow-500 rounded-full shadow-2xl"
-          style={{ top: "42%", left: "45.5%", transform: "translate(-50%, -50%)" }}
+          style={{ 
+            top: "50vh", 
+            left: "50vw", 
+            transform: "translate(-50%, -50%)",
+            zIndex: 10
+          }}
           animate={{
             scale: [1, 1.05, 1],
             boxShadow: [
