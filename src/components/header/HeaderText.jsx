@@ -19,11 +19,13 @@ export const HeaderText = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <motion.h1
+      <motion.span
         className="tracking-wide text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-mono text-green-500 dark:text-green-400"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
+        role="presentation"
+        aria-hidden="true"
       >
         Welcome to my{" "}
         <AnimatePresence mode="wait">
@@ -38,7 +40,7 @@ export const HeaderText = () => {
             {words[currentWordIndex]}
           </motion.span>
         </AnimatePresence>
-      </motion.h1>
+      </motion.span>
     </motion.div>
   );
 };

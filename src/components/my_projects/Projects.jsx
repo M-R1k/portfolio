@@ -58,8 +58,9 @@ const cardVariants = {
 
 export const Projects = () => {
   return (
-    <div
+    <section
       id="projects"
+      aria-label="Projets et réalisations"
       className="py-16 px-6 sm:px-12 lg:px-24 transition-colors duration-500 
                  bg-gradient-to-br from-white via-[#F2F5F9] to-[#E4E7EB] 
                  dark:bg-gradient-to-br dark:from-black dark:via-[#0A0F1E] dark:to-[#1B263B]"
@@ -77,26 +78,31 @@ export const Projects = () => {
           <Card key={project.title} project={project} index={index} />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
 function Card({ project, index }) {
   return (
-    <motion.div
+    <article
       className="w-full max-w-md rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 shadow-lg relative transition-transform duration-500 hover:scale-105 hover:shadow-2xl"
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true, amount: 0.8 }}
+      itemScope
+      itemType="https://schema.org/CreativeWork"
+      aria-label={`Projet ${project.title}`}
     >
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.8 }}
+      >
       <motion.div
         className="relative p-6 flex flex-col justify-center items-center"
         variants={cardVariants}
       >
-        <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-700 dark:text-cyan-400 text-center font-mono">
+        <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-700 dark:text-cyan-400 text-center font-mono" itemProp="name">
           {project.title}
-        </h2>
-        <p className="text-sm sm:text-base text-gray-600 font-mono dark:text-gray-300 mb-6 text-center leading-relaxed">
+        </h3>
+        <p className="text-sm sm:text-base text-gray-600 font-mono dark:text-gray-300 mb-6 text-center leading-relaxed" itemProp="description">
           {project.description}
         </p>
 
@@ -115,7 +121,7 @@ function Card({ project, index }) {
           </div>
         )}
 
-        <div className="flex flex-wrap justify-center gap-3 mt-4">
+        <div className="flex flex-wrap justify-center gap-3 mt-4" itemProp="keywords">
           {project.languages.map((language, i) => (
             <span
               key={i}
@@ -126,6 +132,7 @@ function Card({ project, index }) {
           ))}
         </div>
       </motion.div>
-    </motion.div>
+      </motion.div>
+    </article>
   );
 }

@@ -209,7 +209,6 @@ const generateShootingStars = (num) => {
               }}
             />
       
-            {/* Planète avec texture réaliste */}
             <motion.div
               className={`absolute rounded-full shadow-lg ${planet.texture}`}
               style={{
@@ -231,7 +230,6 @@ const generateShootingStars = (num) => {
                 ease: "linear",
               }}
             >
-              {/* Effets de surface spécifiques */}
               {planet.features.includes("craters") && (
                 <div className="absolute inset-0 rounded-full opacity-30">
                   {Array.from({ length: 3 }).map((_, i) => (
@@ -315,9 +313,8 @@ const generateShootingStars = (num) => {
             
           </div>
         ))}
-  
 
-        {/* Soleil avec texture réaliste */}
+
         <motion.div
           className="absolute sm:w-24 sm:h-24 w-36 h-36 bg-yellow-400 dark:bg-yellow-500 rounded-full shadow-2xl"
           style={{ 
@@ -340,7 +337,6 @@ const generateShootingStars = (num) => {
             ease: "easeInOut",
           }}
         >
-          {/* Taches solaires */}
           <motion.div
             className="absolute w-2 h-2 bg-gray-800 rounded-full opacity-60"
             style={{ top: "30%", left: "40%" }}
@@ -369,7 +365,6 @@ const generateShootingStars = (num) => {
             }}
           />
           
-          {/* Flammes solaires */}
           <motion.div
             className="absolute inset-0 rounded-full opacity-30"
             style={{

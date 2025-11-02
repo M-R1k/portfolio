@@ -9,6 +9,7 @@ export const Socials = () => {
                 href="https://github.com/M-R1k?tab=repositories"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visiter mon profil GitHub"
                 className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-gray-800 text-white shadow-lg transition-all duration-300"
                 whileHover={{
                     scale: 1.1,
@@ -18,13 +19,14 @@ export const Socials = () => {
                 }}
                 whileTap={{ scale: 0.95 }}
             >
-                <FaGithub className="text-white text-2xl group-hover:scale-110 transition-transform duration-300" />
+                <FaGithub className="text-white text-2xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true" />
             </motion.a>
 
             <motion.a
                 href="https://www.linkedin.com/in/aymeric-trinh/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visiter mon profil LinkedIn"
                 className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white shadow-lg transition-all duration-300"
                 whileHover={{
                     scale: 1.1,
@@ -34,12 +36,13 @@ export const Socials = () => {
                 }}
                 whileTap={{ scale: 0.95 }}
             >
-                <FaLinkedin className="text-white text-2xl group-hover:scale-110 transition-transform duration-300" />
+                <FaLinkedin className="text-white text-2xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true" />
             </motion.a>
 
             <motion.a
                 href="CV.pdf"
                 download
+                aria-label="Télécharger mon CV"
                 className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-cyan-600 text-white shadow-lg transition-all duration-300"
                 whileHover={{
                     scale: 1.1,
@@ -49,11 +52,12 @@ export const Socials = () => {
                 }}
                 whileTap={{ scale: 0.95 }}
             >
-                <FaDownload className="text-white text-2xl group-hover:scale-110 transition-transform duration-300" />
+                <FaDownload className="text-white text-2xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true" />
             </motion.a>
 
             <motion.a
                 href="#contact"
+                aria-label="Aller à la section contact"
                 className="group relative flex items-center justify-center w-12 h-12 rounded-full bg-purple-600 text-white shadow-lg transition-all duration-300"
                 whileHover={{
                     scale: 1.1,
@@ -63,7 +67,7 @@ export const Socials = () => {
                 }}
                 whileTap={{ scale: 0.95 }}
             >
-                <FaEnvelope className="text-white text-2xl group-hover:scale-110 transition-transform duration-300" />
+                <FaEnvelope className="text-white text-2xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true" />
             </motion.a>
         </div>
     );

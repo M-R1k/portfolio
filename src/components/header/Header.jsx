@@ -58,14 +58,16 @@ export const Header = () => {
       <StarBackground />
   
       <div className="relative z-10 text-center w-full min-h-screen flex flex-col items-center justify-center space-y-6 px-4 sm:px-8">
-        <motion.h5
+        <motion.p
           className="text-base sm:text-sm tracking-[0.3em] text-cyan-600 dark:text-cyan-400"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
+          role="presentation"
+          aria-hidden="true"
         >
           <HeaderText />
-        </motion.h5>
+        </motion.p>
   
         <motion.h1
           className="text-3xl sm:text-5xl md:text-7xl font-extrabold text-indigo-500 dark:text-gray-200 flex items-center"
@@ -74,19 +76,19 @@ export const Header = () => {
           animate="animate"
         >
           {displayedText}
-          <span className="ml-1 text-indigo-500 dark:text-gray-200">
+          <span className="ml-1 text-indigo-500 dark:text-gray-200" aria-hidden="true">
             {cursorVisible ? "|" : " "}
           </span>
         </motion.h1>
   
-        <motion.h5
+        <motion.p
           className="text-xl sm:text-lg tracking-widest pt-8 text-green-500 dark:text-gray-200 font-mono"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          Front-End Developer
-        </motion.h5>
+          Développeur Front-End & Full-Stack
+        </motion.p>
   
         <div className="mt-8 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8">
           <Socials />

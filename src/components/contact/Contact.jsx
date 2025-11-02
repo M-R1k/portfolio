@@ -53,13 +53,15 @@ export const Contact = () => {
 
   return (
     <motion.footer
+      id="contact"
+      aria-label="Formulaire de contact"
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       className="relative py-16 px-6 sm:px-12 lg:px-24 transition-colors duration-500 
                  bg-gradient-to-br from-white via-[#F2F5F9] to-[#E4E7EB] 
                  dark:bg-gradient-to-br dark:from-purple-900 dark:via-black dark:to-blue-900 opacity-90"
     >
-      <div id="contact" className="mx-auto max-w-4xl text-center">
+      <div className="mx-auto max-w-4xl text-center">
         <motion.h2
           className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-green-600 dark:text-green-400 font-mono tracking-wider"
           initial={{ opacity: 0, y: -20 }}

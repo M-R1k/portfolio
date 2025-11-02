@@ -1,3 +1,5 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+Sitemap: https://m-r1k.github.io/portfolio/sitemap.xml

@@ -10,7 +10,7 @@ export const Authentication = () => {
   };
 
   return (
-    <div id="authentication" className="flex items-center justify-center min-h-screen dark:bg-gradient-to-br dark:from-blue-900 dark:via-black dark:to-purple-900 opacity-80">
+    <section id="authentication" aria-label="Authentification" className="flex items-center justify-center min-h-screen dark:bg-gradient-to-br dark:from-blue-900 dark:via-black dark:to-purple-900 opacity-80">
       <div className="bg-gray-200 dark:bg-black dark:bg-opacity-70 p-8 rounded-lg shadow-2xl w-full max-w-md">   
         <motion.h2
           className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-green-500 dark:text-gray-200 text-center tracking-wider pb-6 font-mono"
@@ -89,6 +89,6 @@ export const Authentication = () => {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

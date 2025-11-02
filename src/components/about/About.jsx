@@ -81,6 +81,7 @@ export const About = () => {
   return (
     <section
       id="about"
+      aria-label="À propos d'Aymeric Trinh"
       className="relative min-h-screen py-16 px-6 sm:px-12 lg:px-24 transition-colors duration-500 
                  bg-gradient-to-br from-white via-[#E9ECEF] to-[#DDE2E6] 
                  dark:bg-gradient-to-br dark:from-black dark:via-[#0A0F1E] dark:to-[#1B263B] 
